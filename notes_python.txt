@@ -1,0 +1,328 @@
+Source Code Encoding:
+1. Uses the UTF-8 as Default encoding  
+To declare an encoding other than the default one, a special comment line should be added as the first line of the file.
+The syntax is as follows:
+syntax:  # -*- coding: encoding -*-
+ex:  # -*- coding: cp-1253 -*-
+2. Comments in Python start with the hash character, #
+3. With Python, it is possible to use the ** operator to calculate powers
+4. If a variable is not “defined” (assigned a value), trying to use it will give you an error:
+
+>>> n  # try to access an undefined variable
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'n' is not defined
+5. In interactive mode, the last printed expression is assigned to the variable _
+ex: >>> tax = 12.5 / 100
+>>> price = 100.50
+>>> price * tax
+12.5625
+>>> price + _
+113.0625
+>>> round(_, 2)
+113.06
+6. In Python 3, print is a function, you need to call it like print("hello world").
+7. If you don’t want characters prefaced by \ to be interpreted as special characters, you can use raw strings by adding an r before the first quote:
+
+>>> print 'C:\some\name'  # here \n means newline!
+C:\some
+ame
+>>> print r'C:\some\name'  # note the r before the quote
+C:\some\name
+8. Strings can be concatenated (glued together) with the + operator, and repeated with *
+9.  # can't concatenate a variable and a string literal
+10. n addition to indexing, slicing is also supported. While indexing is used to obtain individual characters, slicing allows you to obtain a substring:
+
+>>> word[0:2]  # characters from position 0 (included) to 2 (excluded)
+'Py'
+>>> word[2:5]  # characters from position 2 (included) to 5 (excluded)
+'tho'
+11. Note how the start is always included, and the end always excluded. This makes sure that s[:i] + s[i:] is always equal to s:
+
++---+---+---+---+---+---+
+ | P | y | t | h | o | n |
+ +---+---+---+---+---+---+
+ 0   1   2   3   4   5   6
+-6  -5  -4  -3  -2  -1
+
+12. Python strings cannot be changed — they are immutable. Therefore, assigning to an indexed position in the string results in an error:
+
+13. Python knows a number of compound data types, used to group together other values. The most versatile is the list, which can be written as a list of comma-separated values (items) between square brackets. Lists might contain items of different types, but usually the items all have the same type. 
+
+14. Unlike strings, which are immutable, lists are a mutable type, i.e. it is possible to change their content:
+15. 'len' is find the length of the list or string
+16. clearing screen in python interpretor shell
+>>> import os
+>>> clear = lambda: os.system('cls')
+>>> clear()
+
+17. The body of the loop is indented: indentation is Python’s way of grouping statements. At the interactive prompt, you have to type a tab or space(s) for each indented line.
+while entering the code in the python interpretor, u need to follow the spaces and tabs.
+ex: (working code)
+>>> # Fibonacci series:
+... # the sum of two elements defines the next
+... a, b = 0, 1
+>>> while b < 10:
+...     print b
+...     a, b = b, a+b
+...
+1
+1
+2
+3
+5
+8
+(error code)
+>>> # Fibonacci series:
+... # the sum of two elements defines the next
+... a, b = 0, 1
+>>> while b < 10:
+... print b
+IndentationError: expected an indented block is thrown. U need to give the spaces or tabs in second line
+
+18. A trailing comma avoids the newline after the output:
+
+19. raw_input() was renamed to input() in Python3
+
+20. The for statement in Python differs a bit from what you may be used to in C or Pascal. Rather than always iterating over an arithmetic progression of numbers (like in Pascal), or giving the user the ability to define both the iteration step and halting condition (as C), Python’s for statement iterates over the items of any sequence (a list or a string), in the order that they appear in the sequence.
+
+21: f you do need to iterate over a sequence of numbers, the built-in function range() comes in handy. It generates lists containing arithmetic progressions:
+
+Python's range() Parameters
+
+The range() function has two sets of parameters, as follows:
+
+range(stop)
+
+    stop: Number of integers (whole numbers) to generate, starting from zero. eg. range(3) == [0, 1, 2].
+
+range([start], stop[, step])
+
+    start: Starting number of the sequence.
+    stop: Generate numbers up to, but not including this number.
+    step: Difference between each number in the sequence.
+
+22. You may have heard of a function known as xrange(). This is a function that is present in Python 2.x, however it was renamed to range() in Python 3.x, and the original range() function was deprecated in Python 3.x. So what's the difference? Well, in Python 2.x range() produced a list, and xrange() returned an iterator - a sequence object.
+
+23.  break and continue Statements, and else Clauses on Loops
+
+>>> for n in range(2, 10):
+...     for x in range(2, n):
+...         if n % x == 0:
+...             print n, 'equals', x, '*', n/x
+...             break
+...     else:
+...         # loop fell through without finding a factor
+...         print n, 'is a prime number'
+...
+2 is a prime number
+3 is a prime number
+4 equals 2 * 2
+
+24. Python 3.x doesn't evaluate and convert the data type, you have to explicitly convert to ints, with int, like this
+
+x = int(input("Enter a number: "))
+y = int(input("Enter a number: "))
+
+25. The return statement returns with a value from a function. return without an expression argument returns None. Falling off the end of a function also returns None.
+    The statement result.append(a) calls a method of the list object result. A method is a function that ‘belongs’ to an object and is named obj.methodname, where obj is some object (this may be an expression), and methodname is the name of a method that is defined by the object’s type. Different types define different methods. Methods of different types may have the same name without causing ambiguity. (It is possible to define your own object types and methods, using classes, see Classes) The method append() shown in the example is defined for list objects; it adds a new element at the end of the list. In this example it is equivalent to result = result + [a], but more efficient.
+	
+26. The default values are evaluated at the point of function definition in the defining scope, so that
+
+i = 5
+
+def f(arg=i):
+    print arg
+
+i = 6
+f()
+
+will print 5.
+
+26. It's possible to write Python scripts using command line arguments. If you call a Python script from a shell, the arguments are placed after the script name. The arguments are separated by spaces. Inside of the script these arguments are accessible through the list variable sys.argv. The name of the script is included in this list sys.argv[0]. sys.argv[1] contains the first parameter, sys.argv[2] the second and so on. 
+
+27. Arbitrary Keyword Parameters
+There is also a mechanism for an arbitrary number of keyword parameters. To do this, we use the double asterisk "**" notation:
+
+>>> def f(**args):
+...     print(args)
+... 
+>>> f()
+{}
+>>> f(de="German",en="English",fr="French")
+{'fr': 'French', 'de': 'German', 'en': 'English'}
+>>> 
+
+Double Asterisk in Function Calls
+The following example demonstrates the usage of ** in a function call:
+
+>>> def f(a,b,x,y):
+...     print(a,b,x,y)
+...
+>>> d = {'a':'append', 'b':'block','x':'extract','y':'yes'}
+>>> f(**d)
+('append', 'block', 'extract', 'yes')
+
+and now in combination with *:
+
+>>> t = (47,11)
+>>> d = {'x':'extract','y':'yes'}
+>>> f(*t, **d)
+(47, 11, 'extract', 'yes')
+>>> 
+
+28.  L.index(x[, start[, end]])
+
+    If L contains any elements that equal x, return the index of the first such element, otherwise raise a ValueError exception. 
+
+29. 
+list.append(x)
+
+    Add an item to the end of the list. Equivalent to a[len(a):] = [x].
+
+list.extend(iterable)
+
+    Extend the list by appending all the items from the iterable. Equivalent to a[len(a):] = iterable.
+
+list.insert(i, x)
+
+    Insert an item at a given position. The first argument is the index of the element before which to insert, so a.insert(0, x) inserts at the front of the list, and a.insert(len(a), x) is equivalent to a.append(x).
+
+list.remove(x)
+
+    Remove the first item from the list whose value is x. It is an error if there is no such item.
+
+list.pop([i])
+
+    Remove the item at the given position in the list, and return it. If no index is specified, a.pop() removes and returns the last item in the list. (The square brackets around the i in the method signature denote that the parameter is optional, not that you should type square brackets at that position. You will see this notation frequently in the Python Library Reference.)
+
+list.clear()
+
+    Remove all items from the list. Equivalent to del a[:].
+
+list.index(x[, start[, end]])
+
+    Return zero-based index in the list of the first item whose value is x. Raises a ValueError if there is no such item.
+
+    The optional arguments start and end are interpreted as in the slice notation and are used to limit the search to a particular subsequence of the list. The returned index is computed relative to the beginning of the full sequence rather than the start argument.
+
+list.count(x)
+
+    Return the number of times x appears in the list.
+
+list.sort(key=None, reverse=False)
+
+    Sort the items of the list in place (the arguments can be used for sort customization, see sorted() for their explanation).
+
+list.reverse()
+
+    Reverse the elements of the list in place.
+
+list.copy()
+
+    Return a shallow copy of the list. Equivalent to a[:].
+
+30. What is the difference between the list methods append and extend?
+
+   'append' adds its argument as a single element to the end of a list. The length of the list itself will increase by one.
+   
+   'extend' iterates over its argument adding each element to the list, extending the list. The length of the list will increase by however many elements were in the iterable argument.
+
+Append example:
+['foo', 'bar']
+>>> my_list.append('baz')
+>>> my_list
+['foo', 'bar', 'baz']
+>>> another_list = [1, 2, 3]
+>>> my_list.append(another_list)
+>>> my_list
+['foo', 'bar', 'baz', [1, 2, 3]]
+
+Extend example:
+>>> my_list
+['foo', 'bar']
+>>> another_list = [1, 2, 3]
+>>> my_list.extend(another_list)
+>>> my_list
+['foo', 'bar', 1, 2, 3]
+Note:
+=====
+Keep in mind that a string is an iterable, so if you extend a list with a string, you'll append each character as you iterate over the string (which may not be what you want):
+
+>>> my_list.extend('baz')
+>>> my_list
+['foo', 'bar', 1, 2, 3, 'b', 'a', 'z']
+
+Append has constant time complexity, O(1).
+
+Extend has time complexity, O(k). 
+
+31. If the expression is a tuple (e.g. the (x, y) in the previous example), it must be parenthesized.
+
+32. There is a way to remove an item from a list given its index instead of its value: the del statement
+
+33. tuple packing: The statement t = 12345, 54321, 'hello!' is an example of tuple packing: the values 12345, 54321 and 'hello!' are packed together in a tuple. 
+
+34. Sequence unpacking: The statement x,y,z=t
+
+35. A set is an unordered collection with no duplicate elements
+
+36. Basic uses include membership testing and eliminating duplicate entries. Set objects also support mathematical operations like union, intersection, difference, and symmetric difference.
+
+37. It is best to think of a dictionary as an unordered set of key: value pairs, with the requirement that the keys are unique (within one dictionary).
+
+38. The main operations on a dictionary are storing a value with some key and extracting the value given the key. It is also possible to delete a key:value pair with del. If you store using a key that is already in use, the old value associated with that key is forgotten. It is an error to extract a value using a non-existent key.
+
+39. When looping through dictionaries, the key and corresponding value can be retrieved at the same time using the items() method.
+
+40. When looping through a sequence, the position index and corresponding value can be retrieved at the same time using the enumerate() function.
+
+41: numerical operaters > comparision operaters > boolean operaters
+
+A and not B or C is equivalent to (A and (not B)) or C
+
+42. Python has a way to put definitions in a file and use them in a script or in an interactive instance of the interpreter. Such a file is called a module
+
+43. if you want to write a somewhat longer program, you are better off using a text editor to prepare the input for the interpreter and running it with that file as input instead. This is known as creating a script
+
+44. The built-in function dir() is used to find out which names a module defines. It returns a sorted list of strings:
+
+45. PAckage:  collection of modules (a “package”) 
+Structure of package:
+sound/                          Top-level package
+      __init__.py               Initialize the sound package
+      formats/                  Subpackage for file format conversions
+              __init__.py
+              wavread.py
+              wavwrite.py
+              aiffread.py
+              aiffwrite.py
+              auread.py
+              auwrite.py
+              ...
+      effects/                  Subpackage for sound effects
+              __init__.py
+              echo.py
+              surround.py
+              reverse.py
+              ...
+      filters/                  Subpackage for filters
+              __init__.py
+              equalizer.py
+              vocoder.py
+              karaoke.py
+              ...
+
+46. __init__.py can just be an empty file, but it can also execute initialization code for the package or set the __all__ variable
+
+47. import sound.effects.echo == from sound.effects import echo
+
+48. when using syntax like import item.subitem.subsubitem, each item except for the last must be a package; the last item can be a module or a package but can’t be a class or function or variable defined in the previous item.
+
+49.  if a package’s __init__.py code defines a list named __all__, it is taken to be the list of module names that should be imported when from package import * is encountered.
+
+__all__ = ["echo", "surround", "reverse"]
+
+
+
+
